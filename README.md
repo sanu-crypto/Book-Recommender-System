@@ -5,7 +5,7 @@ A Machine Learning based Book Recommendation Web App built using **Streamlit**, 
 ---
 
 ## 🚀 Live Demo
-🌐 https://your-book-app.streamlit.app
+🌐 https://your-book-app.streamlit.app](https://book-recommender-system-szxgabdepcpml45at5k4y9.streamlit.app/
 
 ---
 
