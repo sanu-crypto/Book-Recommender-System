@@ -40,15 +40,23 @@ def fetch_book_details(book_title):
 @st.cache_data
 def load_data():
     books_dict = pickle.load(open("books_dict.pkl", "rb"))
-    similarity = pickle.load(open("book_similarity.pkl", "rb"))
+    
 
     books = pd.DataFrame(books_dict)
     return books, similarity
 
 
-books, similarity = load_data()
+books = load_data()
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
+@st.cache_resource
+def build_similarity(books):
+    tfidf = TfidfVectorizer(stop_words="english")
+    matrix = tfidf.fit_transform(books["description"].fillna(""))
+    return cosine_similarity(matrix)
 
+similarity = build_similarity(books)
 # ==============================
 # 🤖 RECOMMEND FUNCTION
 # ==============================
